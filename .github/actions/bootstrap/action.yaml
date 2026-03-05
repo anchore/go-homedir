@@ -46,4 +46,6 @@ runs:
       if: inputs.bootstrap-apt-packages != ''
       shell: bash
       run: |
-        DEBIAN_FRONTEND=noninteractive sudo apt update && sudo -E apt install -y ${{ inputs.bootstrap-apt-packages }}
+        DEBIAN_FRONTEND=noninteractive sudo apt update && sudo -E apt install -y $PACKAGE_INPUTS
+      env:
+        PACKAGE_INPUTS: ${{ inputs.bootstrap-apt-packages }}
